@@ -1,9 +1,10 @@
-﻿using Slair.Scims.Model.Abstractions;
+﻿using Slair.Core.Model.Abstractions;
+using Slair.Scims.Model.Abstractions;
 using System;
 
 namespace Slair.Scims.Model
 {
-	public class ShiftDescription : EditableEntity<int, int>, IShiftDescription<int, int>
+	public class ShiftDescription : EditableEntityBase<int, int>, IShiftDescription<int, int>
 	{
 		public ShiftDescription ( )
 		{

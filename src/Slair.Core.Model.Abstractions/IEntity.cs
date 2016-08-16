@@ -1,4 +1,4 @@
-﻿namespace Slair.Scims.Model.Abstractions
+﻿namespace Slair.Core.Model.Abstractions
 {
 	public interface IEntity<T>
 	{

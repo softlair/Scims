@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Slair.Core.Model.Abstractions;
+using System.Collections.Generic;
 
 namespace Slair.Scims.Model.Abstractions
 {

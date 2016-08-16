@@ -1,10 +1,11 @@
-﻿using Slair.Scims.Model.Abstractions;
+﻿using Slair.Core.Model.Abstractions;
+using Slair.Scims.Model.Abstractions;
 using System;
 using System.Collections.Generic;
 
 namespace Slair.Scims.Model
 {
-	public class DailyTasksRecord : EditableEntity<int, int>, IDailyTasksRecord<int, int>
+	public class DailyTasksRecord : EditableEntityBase<int, int>, IDailyTasksRecord<int, int>
 	{
 		public DailyTasksRecord ( )
 		{

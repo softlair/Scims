@@ -1,4 +1,6 @@
-﻿namespace Slair.Scims.Model.Abstractions
+﻿using Slair.Core.Model.Abstractions;
+
+namespace Slair.Scims.Model.Abstractions
 {
 	 public interface ITaskInfo : IEditableEntity<int, int>
 	{

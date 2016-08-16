@@ -1,8 +1,9 @@
-﻿using Slair.Scims.Model.Abstractions;
+﻿using Slair.Core.Model.Abstractions;
+using Slair.Scims.Model.Abstractions;
 
 namespace Slair.Scims.Model
 {
-	public class TaskInfo : EditableEntity<int, int>, ITaskInfo
+	public class TaskInfo : EditableEntityBase<int, int>, ITaskInfo
 	{ 
 		public TaskInfo ( )
 		{

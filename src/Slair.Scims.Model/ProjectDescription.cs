@@ -1,10 +1,11 @@
 ﻿using Slair.Scims.Model.Abstractions;
 using System.Collections.Generic;
 using System;
+using Slair.Core.Model.Abstractions;
 
 namespace Slair.Scims.Model
 {
-	public class ProjectDescription : EditableEntity<int, int>, IProjectDescription<int, int>
+	public class ProjectDescription : EditableEntityBase<int, int>, IProjectDescription<int, int>
 	{
 		public ProjectDescription()
 		{

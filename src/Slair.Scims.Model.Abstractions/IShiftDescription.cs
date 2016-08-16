@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Slair.Core.Model.Abstractions;
+using System;
 
 namespace Slair.Scims.Model.Abstractions
 {
