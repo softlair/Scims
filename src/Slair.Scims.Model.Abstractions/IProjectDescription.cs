@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Slair.Scims.Model.Abstractions
 {
-	public interface IProjectDescription<T, U> : IEditableEntity<T, U>
+	public interface IProjectDescription<T> : IEditableModel<T>
 	{
 		int Category { get; set; }
 		string Code { get; set; }
@@ -11,7 +11,7 @@ namespace Slair.Scims.Model.Abstractions
 		string Description { get; set; }
 		string Notes { get; set; }
 
-		ICollection<ITaskDescription<T, U>> Tasks { get; set; }
+		ICollection<ITaskDescription<string>> Tasks { get; set; }
 		bool ArchiveFlag { get; set; }
 	}
 }

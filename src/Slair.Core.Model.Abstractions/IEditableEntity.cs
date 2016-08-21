@@ -2,6 +2,8 @@
 
 namespace Slair.Core.Model.Abstractions
 {
+	//T: ID Type in IEntity
+	//U: User ID Type
 	public interface IEditableEntity<T, U> : IEntity<T>
 	{
 		DateTime CreatedDate { get; set; }
