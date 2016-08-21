@@ -4,7 +4,7 @@ using System;
 
 namespace Slair.Scims.Model
 {
-	public class ShiftDescription : EditableEntityBase<int, int>, IShiftDescription<int, int>
+	public class ShiftDescription : EditableEntityBase<string>, IShiftDescription<string>
 	{
 		public ShiftDescription ( )
 		{

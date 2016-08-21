@@ -7,12 +7,13 @@ using System.Linq.Expressions;
 
 namespace Slair.Scims.Dal.Abstractions
 {
-	public interface IEntityBaseRepository<T,U> where T : class, IEntity<U>, new()
+	public interface IEntityBaseRepository<T> 
+		where T : class, IEntity, new()
 	{
 		IEnumerable<T> AllIncluding (params Expression<Func<T, object>>[] includeProperties);
 		IEnumerable<T> GetAll ( );
 		int Count ( );
-		T GetSingle (U id);
+		T GetSingle (int id);
 		T GetSingle (Expression<Func<T, bool>> predicate);
 		T GetSingle (Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
 		IEnumerable<T> FindBy (Expression<Func<T, bool>> predicate);

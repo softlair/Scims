@@ -1,8 +1,7 @@
 ﻿namespace Slair.Core.Model.Abstractions
 {
-	//T: Entity Key data type
-	public abstract class EntityBase<T> : IEntity<T>
+	public abstract class EntityBase : IEntity
 	{
-		public virtual T Id { get; set; }
+		public virtual int Id { get; set; }
 	}
 }

@@ -9,9 +9,8 @@ using System.Linq.Expressions;
 
 namespace Slair.Core.Dal.Abstractions
 {
-	public class EntityBaseRepository<T, U> : IEntityBaseRepository<T, U>
-			where T : class, IEntity<U>, new()
-			where U : class, IEntity<U>, new()
+	public class EntityBaseRepository<T> : IEntityBaseRepository<T>
+			where T : class, IEntity, new()
 	{
 
 		private DbContext _context;
@@ -40,7 +39,7 @@ namespace Slair.Core.Dal.Abstractions
 			return query.AsEnumerable ( );
 		}
 
-		public T GetSingle (U id)
+		public T GetSingle (int id)
 		{
 			return _context.Set<T> ( ).FirstOrDefault (x => x.Id == id);
 		}

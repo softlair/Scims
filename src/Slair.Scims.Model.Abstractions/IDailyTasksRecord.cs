@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Slair.Scims.Model.Abstractions
 {
-	public  interface IDailyTasksRecord<T, U> : IEditableEntity<T, U>
+	public  interface IDailyTasksRecord<T>: IEditableEntity<T>
 	{
 		 DateTime Date { get; set; }
 		 int Shift { get; set; }

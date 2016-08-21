@@ -3,7 +3,7 @@ using System;
 
 namespace Slair.Scims.Model.Abstractions
 {
-	public interface IShiftDescription<T, U> : IEditableEntity<T, U>, IArchiveableEntity
+	public interface IShiftDescription<T> : IEditableEntity<T>, IArchiveableEntity
 	{
 
 		string Name { get; set; }
