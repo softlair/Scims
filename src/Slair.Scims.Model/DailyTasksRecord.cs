@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Slair.Scims.Model
 {
-	public class DailyTasksRecord : EditableEntityBase<int, int>, IDailyTasksRecord<int, int>
+	public class DailyTasksRecord: EditableEntityBase<string>, IDailyTasksRecord<string>
 	{
 		public DailyTasksRecord ( )
 		{

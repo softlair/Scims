@@ -3,7 +3,7 @@ using Slair.Scims.Model.Abstractions;
 
 namespace Slair.Scims.Model
 {
-	public class TaskInfo : EditableEntityBase<int, int>, ITaskInfo
+	public class TaskInfo : EditableEntityBase<string>, ITaskInfo
 	{ 
 		public TaskInfo ( )
 		{
