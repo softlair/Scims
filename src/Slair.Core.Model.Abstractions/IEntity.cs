@@ -1,7 +1,7 @@
 ﻿namespace Slair.Core.Model.Abstractions
 {
-	public interface IEntity
+	public interface IEntity <T>
 	{
-		int Id { get; set; } // Key is integer for simplicity
+		T Id { get; set; } // ID
 	}
 }

@@ -1,11 +1,10 @@
-﻿using Slair.Core.Model.Abstractions;
-using Slair.Scims.Model.Abstractions;
+﻿using Slair.Scims.Model.Abstractions;
 using System;
 using System.Collections.Generic;
 
 namespace Slair.Scims.Model
 {
-	public class DailyTasksRecord: EditableEntityBase<string>, IDailyTasksRecord<string>
+	public class DailyTasksRecord: EditableModelBase<string>, IDailyTasksRecord<string>
 	{
 		public DailyTasksRecord ( )
 		{
@@ -22,7 +21,7 @@ namespace Slair.Scims.Model
 		public decimal Overtime { get; set; }
 		public decimal PaidBreak { get; set; }
 		public decimal MealBreak { get; set; }
-		public ICollection<ITaskInfo> Tasks { get; set; }
+		public ICollection<ITaskInfo<string>> Tasks { get; set; }
 
 		//true: temporary save
 		//this will allow our user to temporarily save their tasks anytime

@@ -1,10 +1,9 @@
-﻿using Slair.Core.Model.Abstractions;
-using Slair.Scims.Model.Abstractions;
+﻿using Slair.Scims.Model.Abstractions;
 using System.Collections.Generic;
 
 namespace Slair.Scims.Model
 {
-	public class TaskDescription : EditableEntityBase<string>, ITaskDescription<string>
+	public class TaskDescription : EditableModelBase<string>, ITaskDescription<string>
 	{
 		public TaskDescription ( )
 		{
