@@ -11,7 +11,7 @@ namespace Slair.Core.Dal.Abstractions
 {
 	public class EntityBaseRepository<T, U> : IEntityBaseRepository<T, U>
 			where T : class, IEntity<U>, new()
-			where U: class, IEntity<U>, new()
+			where U : class, IEntity<U>, new()
 	{
 
 		private DbContext _context;
