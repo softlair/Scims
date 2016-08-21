@@ -2,7 +2,7 @@
 
 namespace Slair.Scims.Model.Abstractions
 {
-	 public interface ITaskInfo : IEditableEntity<string>
+	 public interface ITaskInfo<T> : IEditableModel<T>
 	{
 
 		// User ID this task is assigned to

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Slair.Scims.Model.Abstractions
 {
-	public  interface IDailyTasksRecord<T>: IEditableEntity<T>
+	public  interface IDailyTasksRecord<T>: IEditableModel<T>
 	{
 		 DateTime Date { get; set; }
 		 int Shift { get; set; }
@@ -18,7 +18,7 @@ namespace Slair.Scims.Model.Abstractions
 		 decimal Overtime { get; set; }
 		 decimal PaidBreak { get; set; }
 		 decimal MealBreak { get; set; }
-		 ICollection<ITaskInfo> Tasks { get; set; }
+		 ICollection<ITaskInfo<T>> Tasks { get; set; }
 		//true: temporary save
 		//this will allow our user to temporarily save their tasks anytime
 		 bool StatusFlag { get; set; }

@@ -1,26 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Slair.Core.Model.Abstractions;
-using Slair.Scims.Model;
+﻿using Slair.Core.Model.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace Slair.Scims.Dal.Abstractions
 {
-	public interface IEntityBaseRepository<T> 
-		where T : class, IEntity, new()
+	public interface IEntityBaseRepository<T, U> 
+		where U : class, IEntity<T>, new()
 	{
-		IEnumerable<T> AllIncluding (params Expression<Func<T, object>>[] includeProperties);
-		IEnumerable<T> GetAll ( );
+		IEnumerable<U> AllIncluding (params Expression<Func<U, object>>[] includeProperties);
+		IEnumerable<U> GetAll ( );
 		int Count ( );
-		T GetSingle (int id);
-		T GetSingle (Expression<Func<T, bool>> predicate);
-		T GetSingle (Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
-		IEnumerable<T> FindBy (Expression<Func<T, bool>> predicate);
-		void Add (T entity);
-		void Update (T entity);
-		void Delete (T entity);
-		void DeleteWhere (Expression<Func<T, bool>> predicate);
+		U GetSingle (T id);
+		U GetSingle (Expression<Func<U, bool>> predicate);
+		U GetSingle (Expression<Func<U, bool>> predicate, params Expression<Func<U, object>>[] includeProperties);
+		IEnumerable<U> FindBy (Expression<Func<U, bool>> predicate);
+		void Add (U entity);
+		void Update (U entity);
+		void Delete (U entity);
+		void DeleteWhere (Expression<Func<U, bool>> predicate);
 		void Commit ( );
 	}
 }
