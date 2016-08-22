@@ -13,7 +13,7 @@ namespace Slair.Core.Dal.Abstractions
 			where U : class, IEntity<T>, new()
 	{
 
-		private DbContext _context;
+		protected DbContext _context;
 
 		public EntityBaseRepository (DbContext context)
 		{
@@ -93,6 +93,15 @@ namespace Slair.Core.Dal.Abstractions
 		public virtual void Commit ( )
 		{
 			_context.SaveChanges ( );
+		}
+	}
+
+	public class EntityBaseRepository<T> : EntityBaseRepository<int, T>
+		where T : class, IEntity<int>, new()
+	{
+		public EntityBaseRepository (DbContext context) : base (context)
+		{
+
 		}
 	}
 }
