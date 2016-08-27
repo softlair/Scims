@@ -13,26 +13,28 @@ namespace Slair.Core.Dal.Abstractions
 			where U : class, IEntity<T>, new()
 	{
 
-		protected DbContext _context;
+		private DbContext	_context;
+		private DbSet<U>	_table;
 
 		public EntityBaseRepository (DbContext context)
 		{
-			_context = context;
+			this._context	= context;
+			this._table		= _context.Set<U> ( );
 		}
 
 		public virtual IEnumerable<U> GetAll ( )
 		{
-			return _context.Set<U> ( ).AsEnumerable ( );
+			return this._table.AsEnumerable ( );
 		}
 
 		public virtual int Count ( )
 		{
-			return _context.Set<U> ( ).Count ( );
+			return this._table.Count ( );
 		}
 
 		public virtual IEnumerable<U> AllIncluding (params Expression<Func<U, object>>[] includeProperties)
 		{
-			IQueryable<U> query = _context.Set<U> ( );
+			IQueryable<U> query = this._table;
 			foreach (var includeProperty in includeProperties) {
 				query = query.Include (includeProperty);
 			}
@@ -41,17 +43,17 @@ namespace Slair.Core.Dal.Abstractions
 
 		public U GetSingle (T id)
 		{
-			return _context.Set<U> ( ).FirstOrDefault (x => EqualityComparer<T>.Default.Equals (x.Id, id));
+			return this._table.FirstOrDefault (x => EqualityComparer<T>.Default.Equals (x.Id, id));
 		}
 
 		public U GetSingle (Expression<Func<U, bool>> predicate)
 		{
-			return _context.Set<U> ( ).FirstOrDefault (predicate);
+			return this._table.FirstOrDefault (predicate);
 		}
 
 		public U GetSingle (Expression<Func<U, bool>> predicate, params Expression<Func<U, object>>[] includeProperties)
 		{
-			IQueryable<U> query = _context.Set<U> ( );
+			IQueryable<U> query = this._table;
 			foreach (var includeProperty in includeProperties) {
 				query = query.Include (includeProperty);
 			}
@@ -61,19 +63,19 @@ namespace Slair.Core.Dal.Abstractions
 
 		public virtual IEnumerable<U> FindBy (Expression<Func<U, bool>> predicate)
 		{
-			return _context.Set<U> ( ).Where (predicate);
+			return this._table.Where (predicate);
 		}
 
 		public virtual void Add (U entity)
 		{
 			EntityEntry dbEntityEntry = _context.Entry<U> (entity);
-			_context.Set<U> ( ).Add (entity);
+			this._table.Add (entity);
 		}
 
 		public virtual void Update (U entity)
 		{
 			EntityEntry dbEntityEntry = _context.Entry<U> (entity);
-			dbEntityEntry.State = EntityState.Modified;
+			_context.Attach (dbEntityEntry);
 		}
 		public virtual void Delete (U entity)
 		{
@@ -83,7 +85,7 @@ namespace Slair.Core.Dal.Abstractions
 
 		public virtual void DeleteWhere (Expression<Func<U, bool>> predicate)
 		{
-			IEnumerable<U> entities = _context.Set<U> ( ).Where (predicate);
+			IEnumerable<U> entities = this._table.Where (predicate);
 
 			foreach (var entity in entities) {
 				_context.Entry<U> (entity).State = EntityState.Deleted;
@@ -93,15 +95,6 @@ namespace Slair.Core.Dal.Abstractions
 		public virtual void Commit ( )
 		{
 			_context.SaveChanges ( );
-		}
-	}
-
-	public class EntityBaseRepository<T> : EntityBaseRepository<int, T>
-		where T : class, IEntity<int>, new()
-	{
-		public EntityBaseRepository (DbContext context) : base (context)
-		{
-
 		}
 	}
 }
