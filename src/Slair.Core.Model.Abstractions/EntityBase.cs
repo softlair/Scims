@@ -4,4 +4,8 @@
 	{
 		public virtual T Id { get; set; }
 	}
+
+	public abstract class EntityBase : EntityBase<int>
+	{
+	}
 }

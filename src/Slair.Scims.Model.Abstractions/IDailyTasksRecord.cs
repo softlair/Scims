@@ -1,12 +1,10 @@
 ﻿using Slair.Core.Model.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Slair.Scims.Model.Abstractions
 {
-	public  interface IDailyTasksRecord<T>: IEditableModel<T>
+	public  interface IDailyTasksRecord<T>: IEditableEntity<T>
 	{
 		 DateTime Date { get; set; }
 		 int Shift { get; set; }

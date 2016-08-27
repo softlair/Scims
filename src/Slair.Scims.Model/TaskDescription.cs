@@ -1,9 +1,11 @@
-﻿using Slair.Scims.Model.Abstractions;
+﻿using Slair.Core.Model.Abstractions;
+using Slair.Scims.Model.Abstractions;
 using System.Collections.Generic;
+using System;
 
 namespace Slair.Scims.Model
 {
-	public class TaskDescription : EditableModelBase<string>, ITaskDescription<string>
+	public class TaskDescription : EditableEntityBase<string>, ITaskDescription<string>
 	{
 		public TaskDescription ( )
 		{
@@ -17,5 +19,9 @@ namespace Slair.Scims.Model
 		public string Notes { get; set; }
 		public ICollection<ITaskDescription<string>> SubTasks { get; set; }
 		public bool ArchiveFlag { get; set; }
+
+		public int ProjectId { get; set; }
+
+		public IProjectDescription<string> Project { get; set; }
 	}
 }

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 namespace Slair.Scims.Dal.Abstractions
 {
 	public interface IEntityBaseRepository<T, U> 
-		where U : class, IEntity<T>, new()
+		where U : class, IEntity<T>
 	{
 		IEnumerable<U> AllIncluding (params Expression<Func<U, object>>[] includeProperties);
 		IEnumerable<U> GetAll ( );
@@ -20,5 +20,11 @@ namespace Slair.Scims.Dal.Abstractions
 		void Delete (U entity);
 		void DeleteWhere (Expression<Func<U, bool>> predicate);
 		void Commit ( );
+	}
+
+	public interface IEntityBaseRepository<T> : IEntityBaseRepository<int, T>
+		where T : class, IEntity<int>
+	{
+
 	}
 }
