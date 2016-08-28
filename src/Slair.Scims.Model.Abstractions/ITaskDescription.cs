@@ -1,9 +1,10 @@
 ﻿using Slair.Core.Model.Abstractions;
+using Slair.Scims.Model.Abstractions;
 using System.Collections.Generic;
 
 namespace Slair.Scims.Model.Abstractions
 {
-	 public interface ITaskDescription<T> : IEditableModel<T>, IArchiveableEntity
+	 public interface ITaskDescription<T> : IEditableEntity<T>, IArchiveableEntity
 	{
 
 		 int Category { get; set; }
@@ -12,5 +13,8 @@ namespace Slair.Scims.Model.Abstractions
 		 string Description { get; set; }
 		 string Notes { get; set; }
 		 ICollection<ITaskDescription<T>> SubTasks { get; set; }
+
+		IProjectDescription<T> Project { get; set; }
+		int ProjectId { get; set; }
 	}
 }

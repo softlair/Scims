@@ -12,4 +12,8 @@ namespace Slair.Core.Model.Abstractions
 		public DateTime UpdatedDate { get; set; }
 		public U UpdatedBy { get; set; }
 	}
+
+	public abstract class EditableEntityBase<T> : EditableEntityBase<int, T>
+	{
+	}
 }
