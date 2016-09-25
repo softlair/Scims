@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Slair.Scims.Dal.Abstractions
+namespace Slair.Core.Dal.Abstractions
 {
 	public interface IEntityBaseRepository<T, U> 
 		where U : class, IEntity<T>

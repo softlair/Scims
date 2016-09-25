@@ -3,7 +3,9 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "Slair.Core.Dal.Abstractions": "1.0.0-*"
+    "Slair.Core.Dal.Abstractions": "1.0.0-*",
+    "Slair.Scims.Model": "1.0.0-*",
+    "Slair.Scims.Model.Abstractions": "1.0.0-*"
   },
 
   "frameworks": {

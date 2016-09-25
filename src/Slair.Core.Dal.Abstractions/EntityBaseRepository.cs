@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Slair.Core.Model.Abstractions;
-using Slair.Scims.Dal.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,6 +94,14 @@ namespace Slair.Core.Dal.Abstractions
 		public virtual void Commit ( )
 		{
 			_context.SaveChanges ( );
+		}
+	}
+
+	public class EntityBaseRepository<T> : EntityBaseRepository<int, T>, IEntityBaseRepository<T>
+	where T : class, IEntity<int>, new()
+	{
+		public EntityBaseRepository (DbContext context) : base (context)
+		{
 		}
 	}
 }
