@@ -19,9 +19,6 @@ namespace Slair.Scims.Model
 		public string Notes { get; set; }
 		public ICollection<ITaskDescription<string>> SubTasks { get; set; }
 		public bool ArchiveFlag { get; set; }
-
-		public int ProjectId { get; set; }
-
-		public IProjectDescription<string> Project { get; set; }
+		public ICollection<IProjectDescription<string>> Projects { get; set; }
 	}
 }
