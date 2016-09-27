@@ -6,7 +6,6 @@
     "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
     "NETStandard.Library": "1.6.0",
     "Slair.Core.Dal.Abstractions": "1.0.0-*",
-    "Slair.Scims.Dal.Abstractions": "1.0.0-*",
     "Slair.Scims.Model": "1.0.0-*"
   },
 
