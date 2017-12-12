@@ -1,0 +1,111 @@
+
+<div class="container"
+  fxLayout
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
+<div class="item item-1" fxFlex="5%"></div>
+<div class="item item-2" fxFlex>
+
+ <mat-card>
+   <mat-card-header class="login-container">
+     <mat-card-title>Timesheet</mat-card-title>
+     <mat-card-subtitle>Logout</mat-card-subtitle>
+   </mat-card-header>
+   <mat-card-content class="login-container">
+      <mat-form-field>
+        <input matInput [matDatepicker]="dp3" placeholder="Current Date" 
+                        [formControl]="date" (dateChange)="onDateChanged()">
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+      <div class="float-right">Hours rendered : {{totalHours}}</div>
+
+      <div class="table-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+      
+          <!-- Project Column -->
+          <ng-container matColumnDef="Project">
+            <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{getProjectHeader(element.projectId)}} </mat-cell>
+          </ng-container>
+      
+          <!-- Task Column -->
+          <ng-container matColumnDef="Task">
+            <mat-header-cell *matHeaderCellDef> Task </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{getTaskHeader(element.taskId)}} </mat-cell>
+          </ng-container>
+      
+          <!-- Subtask Column -->
+          <ng-container matColumnDef="Subtask">
+            <mat-header-cell *matHeaderCellDef> Subtask </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{getTaskHeader(element.subTaskId)}} </mat-cell>
+          </ng-container>
+      
+          <!-- Hours Column -->
+          <ng-container matColumnDef="Hours">
+            <mat-header-cell *matHeaderCellDef> Hours </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.hours}} </mat-cell>
+          </ng-container>
+          
+          <!-- Remarks Column -->
+          <ng-container matColumnDef="Remarks">
+            <mat-header-cell *matHeaderCellDef> Remarks </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.remarks}} </mat-cell>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="Actions">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <mat-icon (click)="onRemoveClick(element)">delete</mat-icon>
+              <mat-icon (click)="onEditClick(element)">mode edit</mat-icon>
+            </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': currentTimesheet.tempId == row.tempId}"></mat-row>
+        </mat-table>
+      </div>
+   </mat-card-content>
+   <mat-card-actions class="login-container">
+
+      <mat-form-field>
+        <mat-select placeholder="Project" name="projectId" 
+                    [(ngModel)]="currentTimesheet.projectId" (ngModelChange)="onProjectChanged()">
+          <mat-option *ngFor="let prj of allProjects" [value]="prj.id">{{prj.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Task" name="taskId"
+                    [(ngModel)]="currentTimesheet.taskId" (ngModelChange)="onTaskChanged()">
+          <mat-option *ngFor="let tsk of tasks" [value]="tsk.id">{{tsk.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-select placeholder="Sub Task" name="subTaskId"
+                    [(ngModel)]="currentTimesheet.subTaskId">
+          <mat-option *ngFor="let tsk of subTasks" [value]="tsk.id">{{tsk.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input matInput type="number" placeholder="Enter time rendered" name="hours"
+               [(ngModel)]="currentTimesheet.hours">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Remarks" name="remarks"
+                  [(ngModel)]="currentTimesheet.remarks"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onAddClick()">{{currentTimesheet.tempId == -1 ? 'Add' : 'Update'}}</button>
+      <button mat-raised-button color="secondary" (click)="onCancelClick()">Cancel</button>
+      
+   </mat-card-actions>
+ </mat-card>
+</div>
+<div class="item item-3" fxFlex="5%"></div>
+</div>
+
